@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ÉTER Café | Administración</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">É</div><div><div class="brand-name">ÉTER</div><div class="brand-sub">CAFÉ · GESTIÓN</div></div></div>
+    <div class="nav-label">ESPACIO DE TRABAJO</div>
+    <button class="nav-item active" data-section="inicio"><span>⌂</span> Inicio</button>
+    <button class="nav-item" data-section="pedidos"><span>▤</span> Pedidos</button>
+    <button class="nav-item" data-section="productos"><span>◈</span> Menú</button>
+    <button class="nav-item" data-section="inventario"><span>▦</span> Inventario</button>
+    <button class="nav-item" data-section="trabajadores"><span>♙</span> Trabajadores</button>
+    <div class="sidebar-note"><div class="note-leaf">✳</div><p>Un espacio para organizar, cuidar y hacer crecer lo que estás construyendo.</p><span>HECHO CON INTENCIÓN</span></div>
+    <div class="sidebar-footer"><span class="status-dot"></span> Sistema local activo</div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar"><div class="mobile-brand">ÉTER <span>CAFÉ</span></div><div class="breadcrumb">ÉTER / <strong id="crumb">Inicio</strong></div><div class="top-right"><span class="today" id="today"></span><div class="avatar">É</div></div></header>
+    <section class="welcome" id="welcome"><div><p class="eyebrow">TU ESPACIO, TU RITMO</p><h1>Todo fluye mejor <em>cuando hay claridad.</em></h1><p class="welcome-copy">Bienvenida al centro de operaciones de ÉTER Café. Aquí puedes cuidar cada detalle de tu negocio.</p></div><div class="welcome-art"><div class="art-circle"></div><div class="art-cup">☕</div><span>PAUSA · CREA · CRECE</span></div></section>
+
+    <section class="section-page active" id="page-inicio">
+      <div class="section-heading"><div><p class="eyebrow">RESUMEN GENERAL</p><h2>Tu cafetería en un vistazo</h2></div><span class="live-pill"><i></i> Datos en tiempo real</span></div>
+      <div class="stats-grid">
+        <article class="stat-card dark"><div class="stat-top"><span>Ventas registradas</span><span class="stat-icon">↗</span></div><strong id="stat-ventas">$0.00</strong><small>Acumulado de pedidos</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Pedidos</span><span class="stat-icon">▤</span></div><strong id="stat-pedidos">0</strong><small>Pedidos registrados</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Productos en menú</span><span class="stat-icon">◈</span></div><strong id="stat-productos">0</strong><small>Productos administrados</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Insumos</span><span class="stat-icon">▦</span></div><strong id="stat-insumos">0</strong><small>Registros de inventario</small></article>
+      </div>
+      <div class="dashboard-grid">
+        <article class="panel"><div class="panel-heading"><div><p class="eyebrow">ACCESO RÁPIDO</p><h3>¿Qué vamos a organizar hoy?</h3></div></div><div class="quick-grid">
+          <button class="quick-action" data-go="pedidos"><span>＋</span><b>Nuevo pedido</b><small>Registrar una venta</small></button>
+          <button class="quick-action" data-go="productos"><span>＋</span><b>Agregar producto</b><small>Actualizar el menú</small></button>
+          <button class="quick-action" data-go="inventario"><span>＋</span><b>Nuevo insumo</b><small>Controlar existencias</small></button>
+          <button class="quick-action" data-go="trabajadores"><span>＋</span><b>Trabajador</b><small>Administrar equipo</small></button>
+        </div></article>
+        <article class="panel quote-panel"><div class="quote-symbol">“</div><h3>Cuidarte también es parte de construir tu vida.</h3><p>ÉTER conecta las pequeñas acciones que hacen crecer tus ideas.</p><span>LA FILOSOFÍA ÉTER</span></article>
+      </div>
+      <article class="panel"><div class="panel-heading"><div><p class="eyebrow">ACTIVIDAD</p><h3>Pedidos recientes</h3></div><button class="text-button" data-go="pedidos">Ver todos →</button></div><div id="recent-orders" class="recent-list"><div class="empty-state">Todavía no hay pedidos. Registra el primero desde el módulo de Pedidos.</div></div></article>
+    </section>
+
+    <section class="section-page" id="page-pedidos">
+      <div class="section-heading"><div><p class="eyebrow">OPERACIÓN DE CAFETERÍA</p><h2>Pedidos</h2><p class="section-description">Registra y administra los pedidos de tus clientes.</p></div><button class="primary-button" id="add-pedidos">＋ Nuevo pedido</button></div>
+      <div class="panel table-panel"><div class="table-toolbar"><div><h3>Todos los pedidos</h3><span class="muted" id="count-pedidos">0 registros</span></div><input class="search" data-search="pedidos" placeholder="Buscar pedido o cliente..."></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>CLIENTE</th><th>PRODUCTO</th><th>CANT.</th><th>TOTAL</th><th>ESTADO</th><th>ACCIONES</th></tr></thead><tbody id="table-pedidos"></tbody></table></div></div>
+    </section>
+
+    <section class="section-page" id="page-productos">
+      <div class="section-heading"><div><p class="eyebrow">IDENTIDAD Y OFERTA</p><h2>Menú ÉTER</h2><p class="section-description">Administra las bebidas, categorías, descripciones y precios.</p></div><button class="primary-button" id="add-productos">＋ Agregar producto</button></div>
+      <div class="menu-intro"><span>☕</span><div><b>Una carta hecha para disfrutar</b><p>Los productos que aparecen aquí forman parte del menú administrable de ÉTER Café.</p></div></div>
+      <div id="product-grid" class="product-grid"></div>
+    </section>
+
+    <section class="section-page" id="page-inventario">
+      <div class="section-heading"><div><p class="eyebrow">CONTROL DE EXISTENCIAS</p><h2>Inventario</h2><p class="section-description">Mantén ordenados los insumos y sus cantidades disponibles.</p></div><button class="primary-button" id="add-inventario">＋ Agregar insumo</button></div>
+      <div class="panel table-panel"><div class="table-toolbar"><div><h3>Insumos registrados</h3><span class="muted" id="count-inventario">0 registros</span></div><input class="search" data-search="inventario" placeholder="Buscar insumo..."></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>INSUMO</th><th>CATEGORÍA</th><th>CANTIDAD</th><th>UNIDAD</th><th>ESTADO</th><th>ACCIONES</th></tr></thead><tbody id="table-inventario"></tbody></table></div></div>
+    </section>
+
+    <section class="section-page" id="page-trabajadores">
+      <div class="section-heading"><div><p class="eyebrow">PERSONAS QUE HACEN ÉTER</p><h2>Trabajadores</h2><p class="section-description">Administra la información del equipo de trabajo.</p></div><button class="primary-button" id="add-trabajadores">＋ Agregar trabajador</button></div>
+      <div class="panel table-panel"><div class="table-toolbar"><div><h3>Equipo de trabajo</h3><span class="muted" id="count-trabajadores">0 registros</span></div><input class="search" data-search="trabajadores" placeholder="Buscar trabajador..."></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>NOMBRE</th><th>PUESTO</th><th>TELÉFONO</th><th>CORREO</th><th>ESTADO</th><th>ACCIONES</th></tr></thead><tbody id="table-trabajadores"></tbody></table></div></div>
+    </section>
+    <footer class="footer">ÉTER CAFÉ <span>·</span> ORGANIZACIÓN CON INTENCIÓN <span class="footer-right">Sistema académico de gestión · v1.0</span></footer>
+  </main>
+</div>
+
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <div class="modal-head"><div><p class="eyebrow" id="modal-eyebrow">GESTIÓN DE REGISTROS</p><h3 id="modal-title">Nuevo registro</h3></div><button class="close-button" id="close-modal">×</button></div>
+    <form id="record-form"><div id="form-fields" class="form-grid"></div><div class="form-actions"><button type="button" class="secondary-button" id="cancel-modal">Cancelar</button><button type="submit" class="primary-button">Guardar registro</button></div></form>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
